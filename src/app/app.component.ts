@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-
-declare global {
-  interface Window {
-    env: any;
-  }
-}
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +8,5 @@ declare global {
 })
 export class AppComponent {
   title = 'angular-env-example';
-  // 我們將從 window 物件讀取這個值，預設為 'Hello from Angular!'
-  greeting = window.env?.GREETING || 'Hello from Angular!';
+  greeting = environment.greeting;
 }

@@ -1,16 +1,33 @@
-# This project demonstrates how to pass environment variables at runtime to a Dockerized Angular application. This allows you to change the application's behavior without rebuilding the Docker        │image.
-## How to Build the Docker Image
-1.  Navigate to the `angular-env-example` directory.
-2.  Run the following command to build the Docker image:
-```bash 
-DOCKER_BUILDKIT=0 docker build -t angular-env-example .
-```
-## How to Run the Application
- 1.  Run the Docker container using the following command. This will start the application on port 8081.
+# Angular Environment Example
+
+This project demonstrates how to use Angular's built-in environment files for staging and production when building a Dockerized application.
+
+## Building the Docker Images
+
+To build the staging image, run:
+
 ```bash
-docker run -d -p 8000:80 -e GREETING="Hello from Docker!" --name angular-env-app angular-env-example
+DOCKER_BUILDKIT=0 docker build -f Dockerfile.staging -t angular-env-staging .
 ```
+
+To build the production image, run:
+
 ```bash
-docker run -d -p 8000:80 -e GREETING="你好，世界！" --name angular-env-app angular-env-example
+DOCKER_BUILDKIT=0 docker build -f Dockerfile.prod -t angular-env-prod .
 ```
-3. Refresh your browser at `http://localhost:8000`, and you will see the new message
+
+## Running the Docker Containers
+
+To run the staging container:
+
+```bash
+docker run -rm -p 8083:80 --name angular-staging-app angular-env-staging
+```
+
+To run the production container:
+
+```bash
+docker run --rm -p 8084:80 --name angular-prod-app angular-env-prod
+```
+
+After running the container, you can access the staging application at `http://localhost:8080` and the production application at `http://localhost:8081`.
