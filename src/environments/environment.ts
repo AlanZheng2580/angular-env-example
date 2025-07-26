@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  greeting: 'Hello from local environment!'
+  greeting: 'Hello from local environment!',
+  urlPrefix: '/tpor/'
 };

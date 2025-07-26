@@ -43,6 +43,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/tpor/",
               "budgets": [
                 {
                   "type": "initial",
@@ -64,6 +65,7 @@
               ]
             },
             "staging": {
+              "baseHref": "/tpor/",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -119,5 +121,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
